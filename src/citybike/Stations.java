@@ -13,11 +13,11 @@ public class Stations {
         newStation++;
     }
     public void addBike(int id){
-        bikes.add(id);
-            System.out.println("Citybike " + id +  " has been added to the station " + stationID);
-    }
-    public void removeBike(int id){
-        bikes.remove(id);
-        System.out.println("Citybike " + id +  " has been removed from the station " + stationID);
+        if (bikes.size() <= 5) {
+            bikes.add(id);
+            System.out.println("Citybike " + id + " has been added to the station " + stationID);
+        }else{
+            System.out.println("Station is full!");
+        }
     }
 }

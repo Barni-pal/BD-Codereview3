@@ -18,14 +18,26 @@ public class User {
         this.name = name;
         this.surname = surname;
     }
-/*    public void bikeRent(int bikeid, int userid) {
-        User renter = new User()
-     *//*
-            inv1.get(bookid).isrented = true;
-            LibraryUser user = person.get(userid);
-            user.id.add(bookid);
-            System.out.println("Renting was succesful!");*//*
-        }*/
-        ArrayList<Integer> id = new ArrayList<>();
+
+    public void bikeRent(int bikeid, int stationid) {
+        if (Out.bike.get(bikeid).state != "CanBeRented"){
+            System.out.println("Bike can not be rented!");
+        }else {
+            Out.station.get(stationid).bikes.remove(bikeid);
+            currentlyRentedBike = bikeid;
+            Out.bike.get(currentlyRentedBike).state = "InService";
+            System.out.println("You have successfully rented your bike!");
+        }
     }
+    public void  bikeRet(int bikeid, int stationid){
+        if (Out.bike.get(bikeid).state != "InService"){
+            System.out.println("Bike can not be returned to the station! Please contact our customer support service!");
+        }else {
+            Out.station.get(stationid).bikes.add(bikeid);
+            currentlyRentedBike = bikeid;
+            Out.bike.get(currentlyRentedBike).state = "CanBeRented";
+            System.out.println("The bike has been returned to the station " + stationid + "!");
+        }
+    }
+}
 

@@ -8,11 +8,11 @@ public class Out {
     public static Map<Integer, Stations> station = new HashMap<>();
     public static Map<Integer, User> user = new HashMap<>();
     public static void main(String[] args) {
-        Bike bike1 = new Bike("Yellow", "InService");
+        Bike bike1 = new Bike("Yellow", "CanBeRented");
         Bike bike2 = new Bike("Red", "CanBeRented");
         Bike bike3 = new Bike("Green", "CanBeRented");
         Bike bike4 = new Bike("Yellow", "CanNotBeRented");
-        Bike bike5 = new Bike("Blue", "InService");
+        Bike bike5 = new Bike("Blue", "CanBeRented");
         Bike bike6 = new Bike("Orange", "Discarded");
         Bike bike7 = new Bike("Purple", "CanNotBeRented");
         Bike bike8 = new Bike("Red", "CanBeRented");
@@ -36,7 +36,7 @@ public class Out {
         station2.addBike(4);
         station2.addBike(5);
         station2.addBike(6);
-        station2.addBike(7);
+        station2.addBike(8);
         User user1 = new User("Jimmy", "Smith");
         User user2 = new User("Carl", "Lock");
         User user3 = new User("Lindsy", "Fisher");
@@ -45,16 +45,8 @@ public class Out {
         user.put(user2.userID, user2);
         user.put(user3.userID, user3);
         user.put(user4.userID, user4);
-        bikeRent(1, 1);
-
-    }
-    public static void bikeRent(Integer renterid, Integer bikeid){
-        User renter = user.get(renterid);
-        renter.currentlyRentedBike = bikeid;
-        renter.id.add(bikeid);
-        System.out.println("You have successfully rented your bike!");
-        station.remove(bikeid);
-
-
+        user1.bikeRent(2,1);
+        user2.bikeRent(1,1);
+        user2.bikeRet(1,1);
     }
 }

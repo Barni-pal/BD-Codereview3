@@ -6,7 +6,7 @@ public class Bike {
     public static int newBike = 1;
     public int bikeID;
     public String color;
-    public String state;
+    public String state = "CanBeRented";
     public Bike(String color, String state){
         bikeID = newBike;
         newBike++;
